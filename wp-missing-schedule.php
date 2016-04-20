@@ -69,12 +69,7 @@ class WP_Missing_Schedule {
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */
 	public function __construct() {
-
-		add_action( 'admin_init', array( $this, 'maybe_upgrade' ) );
-
-		// load plugin text domain
-		add_action( 'init', array( $this, 'plugin_textdomain' ) );
-
+		
 		// Activate plugin when new blog is added
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
@@ -162,20 +157,6 @@ class WP_Missing_Schedule {
 			$this->single_deactivate();
 		}
 
-	}
-
-
-	/**
-	 * Check version number to decide if schedule a publishing task
-	 *
-	 * @return void
-	 */
-	public function maybe_upgrade() {
-		$op  = 'wp_missing_schedule_posts_dbv';
-		$ver = get_option( $op, '0.0.0' );
-		if ( version_compare( $ver, '1.0.0', '<' ) ) {
-			$this->single_activate();
-		}
 	}
 
 	/**
@@ -274,16 +255,6 @@ class WP_Missing_Schedule {
 	 */
 	public function get_plugin_slug() {
 		return $this->plugin_slug;
-	}
-
-	/*--------------------------------------------------*/
-	/* Public Functions
-	/*--------------------------------------------------*/
-	/**
-	 * Loads the Widget's text domain for localization and translation.
-	 */
-	public function plugin_textdomain() {
-		load_plugin_textdomain( $this->get_plugin_slug(), false, plugin_dir_path( __FILE__ ) . 'lang/' );
 	}
 
 } // end class
