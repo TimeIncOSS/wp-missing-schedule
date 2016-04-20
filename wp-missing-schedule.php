@@ -69,7 +69,7 @@ class WP_Missing_Schedule {
 	 * loads localization files, and includes necessary stylesheets and JavaScript.
 	 */
 	public function __construct() {
-		
+
 		// Activate plugin when new blog is added
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
@@ -227,7 +227,7 @@ class WP_Missing_Schedule {
 	}
 
 	/**
-	 * Schedule a wp cron event to fetch all the rss urls every 15min
+	 * Schedule a wp cron event to publish all missing schedule posts every 15min
 	 *
 	 * @return void
 	 */
@@ -236,7 +236,7 @@ class WP_Missing_Schedule {
 	}
 
 	/**
-	 * Unschedule the wp cron event to fetch all the rss urls every 15min
+	 * Unschedule the wp cron event
 	 *
 	 * @return void
 	 */
