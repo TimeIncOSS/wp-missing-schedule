@@ -1,5 +1,5 @@
 {
-    "name"       : "timeincuk/pubish-missing-schedule",
+    "name"       : "timeincuk/wp-missing-schedule",
     "description": "Publish missing scheduled posts",
     "homepage"   : "https://github.com/TimeIncUK/wp-missing-schedule",
     "type"       : "wordpress-plugin",
