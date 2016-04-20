@@ -246,7 +246,7 @@ class WP_Missing_Schedule {
 	}
 
 	/**
-	 * Schedule a wp cron event to fetch all the rss urls every 30min
+	 * Schedule a wp cron event to fetch all the rss urls every 15min
 	 *
 	 * @return void
 	 */
@@ -255,7 +255,7 @@ class WP_Missing_Schedule {
 	}
 
 	/**
-	 * Unschedule the wp cron event to fetch all the rss urls every 30min
+	 * Unschedule the wp cron event to fetch all the rss urls every 15min
 	 *
 	 * @return void
 	 */
