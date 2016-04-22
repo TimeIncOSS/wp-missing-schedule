@@ -188,7 +188,7 @@ class WP_Missing_Schedule {
 	 * @return array $schedules Intervals plus our custom value
 	 */
 	public function cron_add_quarter_hourly( $schedules ) {
-		// Adds twice hourly to the existing schedules, if it's not there.
+		// Adds quarter hourly to the existing schedules, if it's not there.
 		if ( false === array_key_exists( 'quarterhourly', $schedules ) ) {
 			$schedules[ 'quarterhourly' ] = array(
 				'interval' => 900,
