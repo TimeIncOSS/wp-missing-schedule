@@ -219,6 +219,7 @@ class WP_Missing_Schedule {
 		$scheduled_posts = new WP_Query( $args );
 
 		while ( $scheduled_posts->have_posts() ) : $scheduled_posts->the_post();
+			update_post_meta( get_the_ID(), $this->plugin_slug, date( 'Y-m-d H:i:s' ) );
 			check_and_publish_future_post( get_the_ID() );
 		endwhile;
 
