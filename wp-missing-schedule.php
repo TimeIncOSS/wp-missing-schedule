@@ -188,7 +188,7 @@ class WP_Missing_Schedule {
 	 * @return array $schedules Intervals plus our custom value
 	 */
 	public function cron_add_quarter_hourly( $schedules ) {
-		// Adds twice hourly to the existing schedules, if it's not there.
+		// Adds quarter hourly to the existing schedules, if it's not there.
 		if ( false === array_key_exists( 'quarterhourly', $schedules ) ) {
 			$schedules[ 'quarterhourly' ] = array(
 				'interval' => 900,
@@ -206,9 +206,16 @@ class WP_Missing_Schedule {
 	 */
 	public function wp_missing_schedule_posts() {
 
+		$post_types = get_post_types( array( 'public' => true ) );
+
+		if ( isset( $post_types['attachment'] ) ) {
+			unset( $post_types['attachment'] );
+		}
+
 		// Get the missing scheduled posts from the database
 		$args = array(
 			'post_status' => 'future',
+			'post_type'   => array_keys( $post_types ),
 			'date_query'  => array(
 				array(
 					'before' => date( 'Y-m-d H:i:s' ),
@@ -219,11 +226,11 @@ class WP_Missing_Schedule {
 		$scheduled_posts = new WP_Query( $args );
 
 		while ( $scheduled_posts->have_posts() ) : $scheduled_posts->the_post();
-			check_and_publish_future_post( get_the_ID() );
+			$res = update_post_meta( get_the_ID(), $this->plugin_slug, time() );
+			wp_publish_post( get_post() );
 		endwhile;
 
 		wp_reset_postdata();
-
 	}
 
 	/**
