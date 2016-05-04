@@ -30,6 +30,8 @@ class MissingScheduleTest extends WP_UnitTestCase {
 		$this->class->wp_missing_schedule_posts();
 		$post = get_post( $this->post->ID );
 		$this->assertSame( 'publish', $post->post_status );
+		$flag = get_post_meta( $this->post->ID, $this->class->get_plugin_slug() );
+		$this->assertFalse( false === $flag );
 	}
 
 }
