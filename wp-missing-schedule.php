@@ -209,6 +209,7 @@ class WP_Missing_Schedule {
 		// Get the missing scheduled posts from the database
 		$args = array(
 			'post_status' => 'future',
+			'post_type'   => 'any',
 			'date_query'  => array(
 				array(
 					'before' => date( 'Y-m-d H:i:s' ),
