@@ -206,10 +206,16 @@ class WP_Missing_Schedule {
 	 */
 	public function wp_missing_schedule_posts() {
 
+		$post_types = get_post_types( array( 'public' => true ) );
+
+		if ( isset( $post_types['attachment'] ) ) {
+			unset( $post_types['attachment'] );
+		}
+
 		// Get the missing scheduled posts from the database
 		$args = array(
 			'post_status' => 'future',
-			'post_type'   => 'any',
+			'post_type'   => array_keys( $post_types ),
 			'date_query'  => array(
 				array(
 					'before' => date( 'Y-m-d H:i:s' ),
