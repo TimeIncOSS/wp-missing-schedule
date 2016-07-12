@@ -1,7 +1,7 @@
 {
-    "name"       : "timeincuk/wp-missing-schedule",
+    "name"       : "timeincoss/wp-missing-schedule",
     "description": "Publish missing scheduled posts",
-    "homepage"   : "https://github.com/TimeIncUK/wp-missing-schedule",
+    "homepage"   : "https://github.com/timeincoss/wp-missing-schedule",
     "type"       : "wordpress-plugin",
     "license"    : "GPL-2.0+",
     "authors"    : [
