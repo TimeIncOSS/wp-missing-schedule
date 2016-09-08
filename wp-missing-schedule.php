@@ -115,10 +115,12 @@ class WP_Missing_Schedule {
 
 		if ( $network_wide && function_exists( 'is_multisite' ) && is_multisite() ) {
 			// Get all blog ids of the current network
-			$sites = wp_get_sites();
+			$sites = get_sites( array(
+				'fields' => 'ids',
+			) );
 
-			foreach ( $sites as $id => $site ) {
-				switch_to_blog( $site[ 'blog_id' ] );
+			foreach ( $sites as $site ) {
+				switch_to_blog( $site );
 				$this->single_activate();
 			}
 			restore_current_blog();
@@ -146,10 +148,12 @@ class WP_Missing_Schedule {
 
 		if ( $network_wide && function_exists( 'is_multisite' ) && is_multisite() ) {
 			// Get all blog ids of the current network
-			$sites = wp_get_sites();
+			$sites = get_sites( array(
+				'fields' => 'ids',
+			) );
 
-			foreach ( $sites as $id => $site ) {
-				switch_to_blog( $site[ 'blog_id' ] );
+			foreach ( $sites as $site ) {
+				switch_to_blog( $site );
 				$this->single_deactivate();
 			}
 			restore_current_blog();
